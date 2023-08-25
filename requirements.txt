@@ -1,0 +1,6 @@
+gTTS==2.3.2
+langchain==0.0.272
+playsound==1.3.0
+PyAudio==0.2.13
+Requests==2.31.0
+streamlit==1.25.0
