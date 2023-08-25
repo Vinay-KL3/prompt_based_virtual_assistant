@@ -7,7 +7,7 @@
 
 
 import os
-os.environ['OPENAI_API_KEY'] = "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"
+os.environ['OPENAI_API_KEY'] = "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"
 
 def prompt_format(input_name, input_amount):
     dummy_name = "{Name}"
@@ -53,7 +53,7 @@ def bot(intake):
                                 memory=memory
                             )
     BOT = convo.run(intake)
-    # print("BOT : ", BOT)
+    print("\nBOT : ", BOT)
     return BOT
     
 
@@ -67,7 +67,7 @@ def TTS(text):
     lang = "en"
     text = text
 
-    path = "/Users/vinay_kl/Downloads/"+"Aug_22"+".mp3"
+    path = "Aug22.mp3"
 
     speech = gTTS(text=text, lang=lang, slow=False, tld="com.au")
     speech.save(path)
@@ -99,7 +99,7 @@ def ASR2():
     stream.close()
     audio.terminate()
 
-    sound_file = wave.open("/Users/vinay_kl/Downloads/Aug_23.mp3", "wb")
+    sound_file = wave.open("Aug23.mp3", "wb")
     sound_file.setnchannels(1)
     sound_file.setsampwidth(audio.get_sample_size(pyaudio.paInt16))
     sound_file.setframerate(44100)
@@ -121,7 +121,7 @@ def ASR2():
         response = requests.post(API_URL, headers=headers, data=data)
         return response.json()
 
-    output = query("/Users/vinay_kl/Downloads/Aug_23.mp3")
+    output = query("Aug23.mp3")
     utterance = output["text"]
     print("USER : ", utterance)
     return utterance
@@ -144,7 +144,7 @@ def ASR2():
 def voice_bot(input_name, input_amount):
     p = prompt_format(input_name=input_name, input_amount=input_amount)
     BOT = bot(intake=p)
-    print("\nBOT : ",BOT)
+    # print("\nBOT : ",BOT)
     TTS(text=BOT)
     flag = True
 
